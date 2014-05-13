@@ -1,7 +1,5 @@
 //https://github.com/jasondavies/conrec.js
 //http://stackoverflow.com/questions/263305/drawing-a-topographical-map
-var _ = require('lodash'),
-    async = require('async')
 var t = {}
 t.tin = require('./tin')
 t.inside = require('./inside')
@@ -20,10 +18,8 @@ module.exports = function(points, z, resolution, breaks, done){
     gridResult = t.grid(squareBBox, resolution),
     data = [];
 
-  done = done || function () {};
-
-  _(gridResult.features).each(function(pt){
-    _(tinResult.features).each(function(triangle){
+  gridResult.features.forEach(function(pt){
+    tinResult.features.forEach(function(triangle){
       if (t.inside(pt, triangle)) {
         pt.properties = {}
         pt.properties[z] = t.planepoint(pt, triangle);
@@ -35,7 +31,7 @@ module.exports = function(points, z, resolution, breaks, done){
   for (var x=0; x<depth; x++){
     var xGroup = gridResult.features.slice(x * depth, (x + 1) * depth)
     var xFlat = []
-    _.each(xGroup, function(verticalPoint){
+    xGroup.forEach(function(verticalPoint){
       if(verticalPoint.properties){
         xFlat.push(verticalPoint.properties[z])
       } else{
@@ -57,10 +53,10 @@ module.exports = function(points, z, resolution, breaks, done){
   var contourList = c.contourList()
 
   var fc = t.featurecollection([])
-  _.each(contourList, function(c){
+  contourList.forEach(function(c){
     if(c.length > 2){
       var polyCoordinates = []
-      _.each(c, function(coord){
+      c.forEach(function(coord){
         polyCoordinates.push([coord.x, coord.y])
       })
       var poly = t.linestring(polyCoordinates)
@@ -71,7 +67,6 @@ module.exports = function(points, z, resolution, breaks, done){
     }
   })
 
-  done(null, fc)
   return fc;
 }
 
