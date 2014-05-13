@@ -10,17 +10,17 @@ linestring = require('turf-linestring')
 square = require('turf-square')
 
 module.exports = function(points, z, resolution, breaks, done){
-  var tinResult = t.tin(points, z)
-  var extentBBox = t.extent(points)
-  var squareBBox = t.square(extentBBox)
-  var gridResult = t.grid(squareBBox, resolution)
+  var tinResult = tin(points, z)
+  var extentBBox = extent(points)
+  var squareBBox = square(extentBBox)
+  var gridResult = grid(squareBBox, resolution)
   var data = [];
 
   gridResult.features.forEach(function(pt){
     tinResult.features.forEach(function(triangle){
-      if (t.inside(pt, triangle)) {
+      if (inside(pt, triangle)) {
         pt.properties = {}
-        pt.properties[z] = t.planepoint(pt, triangle);
+        pt.properties[z] = planepoint(pt, triangle);
       }
     })
   })
@@ -50,14 +50,14 @@ module.exports = function(points, z, resolution, breaks, done){
   c.contour(data, 0, resolution, 0, resolution, xCoordinates, yCoordinates, breaks.length, breaks)
   var contourList = c.contourList()
 
-  var fc = t.featurecollection([])
+  var fc = featurecollection([])
   contourList.forEach(function(c){
     if(c.length > 2){
       var polyCoordinates = []
       c.forEach(function(coord){
         polyCoordinates.push([coord.x, coord.y])
       })
-      var poly = t.linestring(polyCoordinates)
+      var poly = linestring(polyCoordinates)
       poly.properties = {}
       poly.properties[z] = c.level
 
