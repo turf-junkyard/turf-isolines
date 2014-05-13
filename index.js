@@ -1,22 +1,20 @@
 //https://github.com/jasondavies/conrec.js
 //http://stackoverflow.com/questions/263305/drawing-a-topographical-map
-var t = {}
-t.tin = require('./tin')
-t.inside = require('./inside')
-t.grid = require('./grid')
-t.extent = require('./extent')
-t.planepoint = require('./planepoint')
-t.featurecollection = require('./featurecollection')
-t.linestring = require('./linestring')
-t.square = require('./square')
+tin = require('turf-tin')
+inside = require('turf-inside')
+grid = require('turf-grid')
+extent = require('turf-extent')
+planepoint = require('turf-planepoint')
+featurecollection = require('turf-featurecollection')
+linestring = require('turf-linestring')
+square = require('turf-square')
 
 module.exports = function(points, z, resolution, breaks, done){
-  // TODO: should do error checking here
-  var tinResult = t.tin(points, z),
-    extentBBox = t.extent(points),
-    squareBBox = t.square(extentBBox),
-    gridResult = t.grid(squareBBox, resolution),
-    data = [];
+  var tinResult = t.tin(points, z)
+  var extentBBox = t.extent(points)
+  var squareBBox = t.square(extentBBox)
+  var gridResult = t.grid(squareBBox, resolution)
+  var data = [];
 
   gridResult.features.forEach(function(pt){
     tinResult.features.forEach(function(triangle){
