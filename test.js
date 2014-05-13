@@ -8,7 +8,7 @@ test('isolines', function(t){
   var isolined = isolines(points, 'elevation', 15, [25, 45, 55, 65, 85,  95, 105, 120, 180])
 
   t.ok(isolined.features, 'should take a set of points with z values and output a set of contour lines')
-  t.equal(isolined.features[].geometry.type, 'LineString')
+  t.equal(isolined.features[0].geometry.type, 'LineString')
 
   fs.writeFileSync(__dirname+'/geojson/isolines.geojson', JSON.stringify(isolined))
   t.end()
