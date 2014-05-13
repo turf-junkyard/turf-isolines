@@ -1,0 +1,30 @@
+{
+  "name": "turf-isolines",
+  "version": "0.0.1",
+  "description": "turf isolines module",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/morganherlocker/turf-isolines.git"
+  },
+  "keywords": [
+    "turf",
+    "geojson",
+    "isolines",
+    "contours",
+    "elevation",
+    "topography"
+  ],
+  "author": "morganherlocker",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/morganherlocker/turf-isolines/issues"
+  },
+  "homepage": "https://github.com/morganherlocker/turf-isolines",
+  "devDependencies": {
+    "tape": "^2.12.3"
+  }
+}
