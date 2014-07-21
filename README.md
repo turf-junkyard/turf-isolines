@@ -4,6 +4,29 @@ turf-isolines
 
 Takes a FeatureCollection of points with z values and an array of value breaks and generates isolines. These are commonly used to create elevation maps, but can be used for general data interpolation as well.
 
+###Install
+
+```sh
+npm install turf-isolines
+```
+
+###Parameters
+
+|name|description|
+|---|---|
+|points|points use as seed values|
+|z|z value to contour|
+|resolution|resolution of the underlying grid|
+|breaks|where to draw contours|
+
+###Usage
+
+```js
+isolines(points, z, resolution, breaks)
+```
+
+###Example
+
 ```js
 var isolines = require('turf-isolines')
 var fs = require('fs')
