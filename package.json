@@ -25,16 +25,16 @@
   },
   "homepage": "https://github.com/morganherlocker/turf-isolines",
   "devDependencies": {
-    "tape": "^2.12.3"
+    "tape": "^2.13.4"
   },
   "dependencies": {
-    "turf-extent": "^0.1.1",
+    "turf-extent": "^0.1.4",
     "turf-featurecollection": "^0.1.0",
-    "turf-grid": "0.0.1",
-    "turf-inside": "^0.1.1",
-    "turf-linestring": "^0.1.0",
-    "turf-planepoint": "0.0.1",
-    "turf-square": "^0.1.1",
-    "turf-tin": "0.0.1"
+    "turf-grid": "0.1.0",
+    "turf-inside": "^0.1.4",
+    "turf-linestring": "^0.1.1",
+    "turf-planepoint": "0.1.0",
+    "turf-square": "^0.1.3",
+    "turf-tin": "0.1.0"
   }
 }
