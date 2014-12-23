@@ -16,14 +16,16 @@ module.exports = function(points, z, resolution, breaks, done){
   var gridResult = grid(squareBBox, resolution);
   var data = [];
 
-  gridResult.features.forEach(function(pt){
-    tinResult.features.forEach(function(triangle){
+  for (var i = 0; i < gridResult.features.length; i++) {
+    var pt = gridResult.features[i];
+    for (var j = 0; j < tinResult.features.length; j++) {
+      var triangle = tinResult.features[j];
       if (inside(pt, triangle)) {
         pt.properties = {};
         pt.properties[z] = planepoint(pt, triangle);
       }
-    });
-  });
+    }
+  }
 
   var depth = Math.sqrt(gridResult.features.length);
   for (var x=0; x<depth; x++){
