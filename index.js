@@ -24,13 +24,17 @@ var Conrec = require('./conrec');
  * @param {number[]} breaks at which to draw contours
  * @returns {FeatureCollection} isolines
  * @example
- * var fs = require('fs')
- * var z = 'elevation'
- * var resolution = 15
- * var breaks = [.1, 22, 45, 55, 65, 85,  95, 105, 120, 180]
- * var points = JSON.parse(fs.readFileSync('/path/to/points.geojson'))
- * var isolined = turf.isolines(points, z, resolution, breaks)
- * console.log(isolined)
+ * // create random points with random
+ * // z-values in their properties
+ * var points = turf.random('point', 100, {
+ *   bbox: [0, 30, 20, 50]
+ * });
+ * for (var i = 0; i < points.features.length; i++) {
+ *   points.features[i].properties.z = Math.random() * 10;
+ * }
+ * var breaks = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+ * var isolined = turf.isolines(points, 'z', 15, breaks);
+ * //=isolined
  */
 module.exports = function(points, z, resolution, breaks, done){
   var tinResult = tin(points, z);
@@ -66,12 +70,12 @@ module.exports = function(points, z, resolution, breaks, done){
   var interval = (squareBBox[2] - squareBBox[0]) / depth;
   var xCoordinates = [];
   var yCoordinates = [];
-  for (var x=0; x<depth; x++){
+  for (var x = 0; x < depth; x++) {
     xCoordinates.push(x * interval + squareBBox[0]);
     yCoordinates.push(x * interval + squareBBox[1]);
   }
 
-  var c = new Conrec;
+  var c = new Conrec();
   c.contour(data, 0, resolution, 0, resolution, xCoordinates, yCoordinates, breaks.length, breaks);
   var contourList = c.contourList();
 
