@@ -27,9 +27,9 @@
   "homepage": "https://github.com/Turfjs/turf-isolines",
   "devDependencies": {
     "benchmark": "^1.0.0",
-    "tape": "^3.0.3",
+    "tape": "^3.5.0",
     "dox": "^0.6.1",
-    "doxme": "^1.4.2"
+    "doxme": "^1.4.3"
   },
   "dependencies": {
     "turf-extent": "^1.0.3",
@@ -39,6 +39,6 @@
     "turf-linestring": "^1.0.1",
     "turf-planepoint": "^1.0.0",
     "turf-square": "^1.0.0",
-    "turf-tin": "^1.0.2"
+    "turf-tin": "^1.0.5"
   }
 }
