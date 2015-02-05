@@ -15,6 +15,7 @@ var Conrec = require('./conrec');
  * value breaks and generates [isolines](http://en.wikipedia.org/wiki/Isoline).
  *
  * @module turf/isolines
+ * @category interpolation
  * @param {FeatureCollection} points a FeatureCollection of {@link Point} features
  * @param {string} z the property name in `points` from which z-values will be pulled
  * @param {number} resolution resolution of the underlying grid
