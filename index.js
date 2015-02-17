@@ -34,7 +34,7 @@ var Conrec = require('./conrec');
  * var isolined = turf.isolines(points, 'z', 15, breaks);
  * //=isolined
  */
-module.exports = function(points, z, resolution, breaks, done){
+module.exports = function(points, z, resolution, breaks){
   var tinResult = tin(points, z);
   var extentBBox = extent(points);
   var squareBBox = square(extentBBox);
