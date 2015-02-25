@@ -11,16 +11,16 @@ var square = require('turf-square');
 var Conrec = require('./conrec');
 
 /**
- * Takes a {@link FeatureCollection} of {@link Point} features with z-values and an array of
+ * Takes points with z-values and an array of
  * value breaks and generates [isolines](http://en.wikipedia.org/wiki/Isoline).
  *
  * @module turf/isolines
  * @category interpolation
- * @param {FeatureCollection} points a FeatureCollection of {@link Point} features
- * @param {string} z the property name in `points` from which z-values will be pulled
- * @param {number} resolution resolution of the underlying grid
- * @param {number[]} breaks where to draw contours
- * @returns {FeatureCollection} a FeatureCollection of {@link LineString} features representing isolines
+ * @param {FeatureCollection<Point>} points input points
+ * @param {String} z the property name in `points` from which z-values will be pulled
+ * @param {Number} resolution resolution of the underlying grid
+ * @param {Array<Number>} breaks where to draw contours
+ * @returns {FeatureCollection<LineString>} isolines
  * @example
  * // create random points with random
  * // z-values in their properties
