@@ -11,7 +11,7 @@ var square = require('turf-square');
 var Conrec = require('./conrec');
 
 /**
- * Takes points with z-values and an array of
+ * Takes {@link Point|points} with z-values and an array of
  * value breaks and generates [isolines](http://en.wikipedia.org/wiki/Isoline).
  *
  * @module turf/isolines
