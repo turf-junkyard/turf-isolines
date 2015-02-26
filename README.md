@@ -7,20 +7,18 @@ turf isolines module
 
 ### `turf.isolines(points, z, resolution, breaks)`
 
-Takes a FeatureCollection of points with z values and an array of
+Takes Point|points with z-values and an array of
 value breaks and generates [isolines](http://en.wikipedia.org/wiki/Isoline).
-These are commonly used to create elevation maps, but can be used
-for general data interpolation as well.
 
 
 ### Parameters
 
-| parameter    | type              | description                                                 |
-| ------------ | ----------------- | ----------------------------------------------------------- |
-| `points`     | FeatureCollection | a collection containing only Features with Point geometries |
-| `z`          | string            | field in properties to contour                              |
-| `resolution` | number            |                                                             |
-| `breaks`     | Array.<number>    | at which to draw contours                                   |
+| parameter    | type                         | description                                                      |
+| ------------ | ---------------------------- | ---------------------------------------------------------------- |
+| `points`     | FeatureCollection\.\<Point\> | input points                                                     |
+| `z`          | String                       | the property name in `points` from which z-values will be pulled |
+| `resolution` | Number                       | resolution of the underlying grid                                |
+| `breaks`     | Array\.\<Number\>            | where to draw contours                                           |
 
 
 ### Example
@@ -40,7 +38,7 @@ var isolined = turf.isolines(points, 'z', 15, breaks);
 ```
 
 
-**Returns** `FeatureCollection`, isolines
+**Returns** `FeatureCollection.<LineString>`, isolines
 
 ## Installation
 
@@ -55,4 +53,5 @@ $ npm install turf-isolines
 ```sh
 $ npm test
 ```
+
 
