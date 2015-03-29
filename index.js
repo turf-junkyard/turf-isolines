@@ -34,7 +34,7 @@ var Conrec = require('./conrec');
  * var isolined = turf.isolines(points, 'z', 15, breaks);
  * //=isolined
  */
-module.exports = function(points, z, resolution, breaks){
+module.exports = function(points, z, resolution, breaks) {
   var tinResult = tin(points, z);
   var extentBBox = extent(points);
   var squareBBox = square(extentBBox);
@@ -53,13 +53,13 @@ module.exports = function(points, z, resolution, breaks){
   }
 
   var depth = Math.sqrt(gridResult.features.length);
-  for (var x=0; x<depth; x++){
+  for (var x=0; x<depth; x++) {
     var xGroup = gridResult.features.slice(x * depth, (x + 1) * depth);
     var xFlat = [];
-    xGroup.forEach(function(verticalPoint){
-      if(verticalPoint.properties){
+    xGroup.forEach(function(verticalPoint) {
+      if(verticalPoint.properties) {
         xFlat.push(verticalPoint.properties[z]);
-      } else{
+      } else {
         xFlat.push(0);
       }
     });
@@ -78,10 +78,10 @@ module.exports = function(points, z, resolution, breaks){
   var contourList = c.contourList();
 
   var fc = featurecollection([]);
-  contourList.forEach(function(c){
-    if(c.length > 2){
+  contourList.forEach(function(c) {
+    if(c.length > 2) {
       var polyCoordinates = [];
-      c.forEach(function(coord){
+      c.forEach(function(coord) {
         polyCoordinates.push([coord.x, coord.y]);
       });
       var poly = linestring(polyCoordinates);
@@ -93,7 +93,4 @@ module.exports = function(points, z, resolution, breaks){
   });
 
   return fc;
-}
-
-
-
+};
